@@ -4,10 +4,10 @@ import (
     "context"
     "fmt"
     "log"
-    "reflect"
+    //"reflect"
 
 
-    "go.mongodb.org/mongo-driver/bson"
+    //"go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/mongo"
     "go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -99,7 +99,7 @@ func main() {
     fmt.Println("Connected to MongoDB!")
 
 // Handling the collection ImageNames in Database GoDB
-  collection := client.Database("GoDB").Collection("ImageNames")
+  //collection := client.Database("GoDB").Collection("ImageNames")
 
 // add logic here :
 
@@ -110,5 +110,4 @@ func main() {
       log.Fatal(err)
   }
   fmt.Println("Connection to MongoDB closed.")
-
 }

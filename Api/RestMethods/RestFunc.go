@@ -9,6 +9,17 @@ import (
 Write function description here :
 
 */
+func Create(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusOK)
+    w.Write([]byte(`{"message": "CREATE called"}`))
+}
+
+/*
+
+Write function description here :
+
+*/
 func Get(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "application/json")
     w.WriteHeader(http.StatusOK)
