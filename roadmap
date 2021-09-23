@@ -1,0 +1,42 @@
+Github: https://github.com/Anirudh-RV/LibraryManagement
+
+PLAN
+Day 1 (23rd Sept 2021):
+
+- Set up Environment
+- Set up Template for:
+- MongoDB
+- Go API
+- React front end
+
+Day 2 (24th Sept 2021):
+
+- Set up the DB relations
+- Create custom data entries
+- Set up API for CRUD and necessary operations for only:
+  a. Member
+  b. Book
+  c. Issuance
+- Can extend to others in: https://dbdiagram.io/d/6148c958825b5b01460afb74 if deadline not reached.
+
+- API Requirement:
+
+1. Generating APIs is usually better than writing them.
+2. APIs should have some security mechanism built in to prevent unauthorized calls (API Key etc)
+3. API should follow a standard. For e.g. the API endpoint should be something like:
+   myapplication.abc.com/<entity name >/<entity id>
+4. GET libmgmt.abc.com/book/1 should return the details of book with id = 1
+5. API should support standard CRUD Methods (PUT, POST, GET)
+6. Delete is not required
+
+Day 3 (25th Sept 2021):
+
+- Complete the API Creation
+- Get the UI ready for the ask:
+  Build UI for a simple dashboard showing which members have books pending for return on a given day
+- Verify the API meets all requirements
+
+Day 4 (26th Sept 2021):
+
+- Containerize the solutions
+- Try to setup

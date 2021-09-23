@@ -1,15 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Routes from './spaComponents/Routes';
-import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import Routes from "./spaComponents/Routes";
+import { BrowserRouter } from "react-router-dom";
 
+ReactDOM.render(
+  <BrowserRouter>
+    <Routes />
+  </BrowserRouter>,
 
-
- ReactDOM.render((
- <BrowserRouter>
-   <Routes />
- </BrowserRouter>
-
- ), document.getElementById('root'));
+  document.getElementById("root")
+);
