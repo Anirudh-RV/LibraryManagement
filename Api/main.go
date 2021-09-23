@@ -9,14 +9,15 @@ import (
     "github.com/gorilla/mux"
     "github.com/gorilla/handlers"
 
-     RestMethods "./RestMethods"
-     HandleImages "./HandleImages"
-     HandleUsers "./HandleUsers"
+    "github.com/Anirudh-RV/LibraryManagement/RestMethods"
+    "github.com/Anirudh-RV/LibraryManagement/HandleImages"
+    "github.com/Anirudh-RV/LibraryManagement/HandleUsers"
 )
 
 func main() {
     r := mux.NewRouter()
 
+    r.HandleFunc("/", RestMethods.Create).Methods(http.MethodCreate) //65
     r.HandleFunc("/", RestMethods.Get).Methods(http.MethodGet) //65
     r.HandleFunc("/", RestMethods.Post).Methods(http.MethodPost) //71
     r.HandleFunc("/", RestMethods.Put).Methods(http.MethodPut) //77
@@ -34,7 +35,7 @@ func main() {
 
     // To Handle CORS (Cross Origin Resource Sharing)
     headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
-    methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS","DELETE"})
+    methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS","DELETE", "CREATE"})
     origins := handlers.AllowedOrigins([]string{"*"})
 
     fmt.Println("Testing-Running on port : 8080")
