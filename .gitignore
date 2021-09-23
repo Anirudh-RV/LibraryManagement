@@ -1,0 +1,14 @@
+*.h5
+*.weights
+*.avi
+*.jpeg
+node_modules/
+Data/
+*.mp4
+*.jpg
+*.pyc
+*.zip
+*.jpeg
+*.jpg
+*.pdf
+*.DS_Store
