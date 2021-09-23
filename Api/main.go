@@ -9,15 +9,15 @@ import (
     "github.com/gorilla/mux"
     "github.com/gorilla/handlers"
 
-    "github.com/Anirudh-RV/LibraryManagement/RestMethods"
-    "github.com/Anirudh-RV/LibraryManagement/HandleImages"
-    "github.com/Anirudh-RV/LibraryManagement/HandleUsers"
+    "Api/RestMethods"
+    "Api/HandleImages"
+    "Api/HandleUsers"
 )
 
 func main() {
     r := mux.NewRouter()
 
-    r.HandleFunc("/", RestMethods.Create).Methods(http.MethodCreate) //65
+    //r.HandleFunc("/", RestMethods.Create).Methods(http.MethodCreate) //65
     r.HandleFunc("/", RestMethods.Get).Methods(http.MethodGet) //65
     r.HandleFunc("/", RestMethods.Post).Methods(http.MethodPost) //71
     r.HandleFunc("/", RestMethods.Put).Methods(http.MethodPut) //77
