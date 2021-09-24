@@ -15,7 +15,7 @@ import (
 /*
 
 Write function description here :
-
+Serves GET request for getting Member data
 */
 func GetMembers(w http.ResponseWriter, r *http.Request) {
   pathParams := mux.Vars(r)

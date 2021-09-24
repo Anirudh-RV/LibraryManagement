@@ -14,10 +14,14 @@ import (
 )
 
 type Member struct {
-    mem_id  int
-    mem_name  string
-    mem_phone  string
-    mem_email  string
+    Mem_id  int `json:"mem_id"`
+    Mem_name  string `json:"mem_name"`
+    Mem_phone  string `json:"mem_phone"`
+    Mem_email  string `json:"mem_email"`
+}
+
+type Members struct {
+  Members []Member `json:"members"`
 }
 
 /*
