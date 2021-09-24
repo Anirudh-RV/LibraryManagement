@@ -9,11 +9,20 @@ import (
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 
+	"Api/HandleJWT"
 	"Api/HandleMembers"
 	"Api/RestMethods"
 )
 
 func main() {
+
+    // Generate the JWT Token for access of the APIs
+    validToken, err := HandleJWT.GenerateJWT()
+    fmt.Printf("Valid Token: %s\n", validToken)
+    if err != nil{
+        fmt.Println("Failed to generate token")
+    }
+    // Handle the requests
     r := mux.NewRouter()
 
     r.HandleFunc("/", RestMethods.Get).Methods(http.MethodGet) 
@@ -26,10 +35,10 @@ func main() {
     // For Members:
 
     // Create Operation:
-    r.HandleFunc("/member/", HandleMembers.AddMembers).Methods(http.MethodPost)
+    r.Handle("/member/", HandleJWT.IsAuthorized(HandleMembers.AddMembers)).Methods(http.MethodPost)
     // Get Operation:
-    r.HandleFunc("/member/", HandleMembers.GetMembers).Methods(http.MethodGet)
-    r.HandleFunc("/member/{mem_id}", HandleMembers.GetMembers).Methods(http.MethodGet)
+    r.Handle("/member/", HandleJWT.IsAuthorized(HandleMembers.GetMembers)).Methods(http.MethodGet)
+    r.Handle("/member/{mem_id}", HandleJWT.IsAuthorized(HandleMembers.GetMembers)).Methods(http.MethodGet)
     // Update Operation:
     r.HandleFunc("/member/{mem_id}", HandleMembers.UpdateMembersPut).Methods(http.MethodPut)
     // Error 

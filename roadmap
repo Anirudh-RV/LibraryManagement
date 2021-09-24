@@ -12,6 +12,7 @@ Day 1 (23rd Sept 2021):
 Day 2 (24th Sept 2021):
 
 - Set up the DB relations
+- Use JWT for authorization
 - Create custom data entries
 - Set up API for CRUD and necessary operations for only:
   a. Member
