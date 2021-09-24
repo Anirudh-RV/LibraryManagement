@@ -13,9 +13,11 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type Image_Names struct {
-    Name  string
-    Img_Name string
+type Member struct {
+    id  int
+    mem_name  string
+    mem_phone  string
+    mem_emial  string
 }
 
 /*

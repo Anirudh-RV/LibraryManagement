@@ -16,23 +16,23 @@ import (
 func main() {
     r := mux.NewRouter()
 
-    r.HandleFunc("/", RestMethods.Get).Methods(http.MethodGet) //65
-    r.HandleFunc("/", RestMethods.Post).Methods(http.MethodPost) //71
-    r.HandleFunc("/", RestMethods.Put).Methods(http.MethodPut) //77
-    r.HandleFunc("/", RestMethods.Patch).Methods(http.MethodPatch) //65
-    r.HandleFunc("/", RestMethods.Delete).Methods(http.MethodDelete) // 83
-    r.HandleFunc("/", RestMethods.NotFound) // 89
+    r.HandleFunc("/", RestMethods.Get).Methods(http.MethodGet) 
+    r.HandleFunc("/", RestMethods.Post).Methods(http.MethodPost) 
+    r.HandleFunc("/", RestMethods.Put).Methods(http.MethodPut) 
+    r.HandleFunc("/", RestMethods.Patch).Methods(http.MethodPatch) 
+    r.HandleFunc("/", RestMethods.Delete).Methods(http.MethodDelete) 
+    r.HandleFunc("/", RestMethods.NotFound)
 
     // For Members:
 
     // Create Operation:
-    r.HandleFunc("/member", HandleMembers.GetMembers).Methods(http.MethodPost)
+    r.HandleFunc("/member/", HandleMembers.AddMembers).Methods(http.MethodPost)
     // Get Operation:
-    r.HandleFunc("/member", HandleMembers.GetMembers).Methods(http.MethodGet)
+    r.HandleFunc("/member/", HandleMembers.GetMembers).Methods(http.MethodGet)
+    r.HandleFunc("/member/{mem_id}", HandleMembers.GetMembers).Methods(http.MethodGet)
     // Update Operation:
-    r.HandleFunc("/member", HandleMembers.GetMembers).Methods(http.MethodGet)
+    r.HandleFunc("/member/{mem_id}", HandleMembers.UpdateMembersPut).Methods(http.MethodPut)
     // Error 
-    r.HandleFunc("/member", RestMethods.NotFound).Methods(http.MethodPatch)
 
     // To Handle CORS (Cross Origin Resource Sharing)
     headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
