@@ -1,38 +1,38 @@
 package main
 
 import (
-    "log"
-    "net/http"
-    "fmt"
+	"fmt"
+	"log"
+	"net/http"
 
-    // handles url/redirection
-    "github.com/gorilla/mux"
-    "github.com/gorilla/handlers"
+	// handles url/redirection
+	"github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
 
-    "Api/RestMethods"
-    "Api/HandleImages"
-    "Api/HandleUsers"
-    "Api/TestMongo"
+	"Api/HandleMembers"
+	"Api/RestMethods"
 )
 
 func main() {
     r := mux.NewRouter()
 
-    r.HandleFunc("/", RestMethods.Create).Methods(http.MethodCreate) //65
     r.HandleFunc("/", RestMethods.Get).Methods(http.MethodGet) //65
     r.HandleFunc("/", RestMethods.Post).Methods(http.MethodPost) //71
     r.HandleFunc("/", RestMethods.Put).Methods(http.MethodPut) //77
+    r.HandleFunc("/", RestMethods.Patch).Methods(http.MethodPatch) //65
     r.HandleFunc("/", RestMethods.Delete).Methods(http.MethodDelete) // 83
     r.HandleFunc("/", RestMethods.NotFound) // 89
 
-    r.HandleFunc("/getimages", HandleImages.GetImages).Methods(http.MethodPost) //97
-    r.HandleFunc("/insertimagedata",HandleImages.AddImagesToDataBase).Methods(http.MethodPost) // 149
+    // For Members:
 
-    r.HandleFunc("/deleteuser",HandleUsers.DeleteUser).Methods(http.MethodPost) // 197
-    r.HandleFunc("/saveastextfile",HandleUsers.SaveAsTextFile).Methods(http.MethodPost) // 235
-    r.HandleFunc("/authorizeuser",HandleUsers.AuthorizeUser).Methods(http.MethodPost) // 280
-    r.HandleFunc("/validateinfo",HandleUsers.ValidateInfo).Methods(http.MethodPost) // 331
-    r.HandleFunc("/addusertodatabase",HandleUsers.AddUserToDatabase).Methods(http.MethodPost) // 377
+    // Create Operation:
+    r.HandleFunc("/member", HandleMembers.GetMembers).Methods(http.MethodPost)
+    // Get Operation:
+    r.HandleFunc("/member", HandleMembers.GetMembers).Methods(http.MethodGet)
+    // Update Operation:
+    r.HandleFunc("/member", HandleMembers.GetMembers).Methods(http.MethodGet)
+    // Error 
+    r.HandleFunc("/member", RestMethods.NotFound).Methods(http.MethodPatch)
 
     // To Handle CORS (Cross Origin Resource Sharing)
     headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})

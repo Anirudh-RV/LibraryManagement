@@ -1,28 +1,17 @@
-package HandleUsers
+package HandleIssuance
 
 import (
-    "log"
-    "unsafe"
-    "reflect"
-    "context"
-    "fmt"
-    "net"
+	"context"
+	"fmt"
+	"log"
+	"net"
+	"reflect"
+	"unsafe"
 
-    // MongoDB drivers
-    "go.mongodb.org/mongo-driver/mongo"
-    "go.mongodb.org/mongo-driver/mongo/options"
+	// MongoDB drivers
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
-
-type SentData struct {
-	data string
-}
-
-type User_Data struct{
-  Email string
-  UserName string
-  FullName string
-  Password string
-}
 
 type Image_Names struct {
     Name  string
@@ -34,6 +23,7 @@ type Image_Names struct {
 Write function description here :
 
 */
+
 func GetLocalIP() string {
     addrs, err := net.InterfaceAddrs()
     if err != nil {
@@ -50,7 +40,6 @@ func GetLocalIP() string {
     return ""
 }
 
-
 /*
 
 Write function description here :
@@ -63,6 +52,7 @@ func GetClientOptions() *options.ClientOptions {
   clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
   return clientOptions
 }
+
 /*
 
 Write function description here :

@@ -1,16 +1,16 @@
-package HandleImages
+package HandleMembers
 
 import (
-  "context"
-  "log"
-  "reflect"
-  "unsafe"
-  "fmt"
-  "net"
+	"context"
+	"fmt"
+	"log"
+	"net"
+	"reflect"
+	"unsafe"
 
-  // MongoDB drivers
-  "go.mongodb.org/mongo-driver/mongo"
-  "go.mongodb.org/mongo-driver/mongo/options"
+	// MongoDB drivers
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 type Image_Names struct {
@@ -72,7 +72,7 @@ Write function description here :
 
 */
 func GetCollection (client *mongo.Client,collectionname string) *mongo.Collection{
-  collection := client.Database("GoDB").Collection(collectionname)
+  collection := client.Database("LibraryAdmin").Collection(collectionname)
   return collection
 }
 

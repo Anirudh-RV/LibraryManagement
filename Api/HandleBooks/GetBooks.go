@@ -1,15 +1,15 @@
-package HandleImages
+package HandleBooks
 
 import (
-  "context"
-  "log"
-  "net/http"
-  "reflect"
-  "io/ioutil"
-  "fmt"
+	"context"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"reflect"
 
-  // MongoDB drivers
-  "go.mongodb.org/mongo-driver/bson"
+	// MongoDB drivers
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 /*
@@ -17,7 +17,7 @@ import (
 Write function description here :
 
 */
-func GetImages(w http.ResponseWriter, r *http.Request) {
+func GetBooks(w http.ResponseWriter, r *http.Request) {
 
   w.Header().Set("Content-Type", "application/json")
   w.WriteHeader(http.StatusOK)

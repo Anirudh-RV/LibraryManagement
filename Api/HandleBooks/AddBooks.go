@@ -1,19 +1,20 @@
-package HandleImages
+package HandleBooks
 
 import (
-  "context"
-  "log"
-  "net/http"
-  "strings"
-  "io/ioutil"
-  "fmt"
+	"context"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"strings"
 )
+
 /*
 
 Write function description here :
 
 */
-func AddImagesToDataBase(w http.ResponseWriter, r *http.Request) {
+func AddBooks(w http.ResponseWriter, r *http.Request) {
   w.Header().Set("Content-Type", "application/json")
   w.WriteHeader(http.StatusCreated)
 
