@@ -14,10 +14,10 @@ import (
 )
 
 type Member struct {
-    id  int
+    mem_id  int
     mem_name  string
     mem_phone  string
-    mem_emial  string
+    mem_email  string
 }
 
 /*

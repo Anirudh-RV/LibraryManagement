@@ -38,7 +38,7 @@ func main() {
     r.Handle("/member/", HandleJWT.IsAuthorized(HandleMembers.AddMembers)).Methods(http.MethodPost)
     // Get Operation:
     r.Handle("/member/", HandleJWT.IsAuthorized(HandleMembers.GetMembers)).Methods(http.MethodGet)
-    r.Handle("/member/{mem_id}", HandleJWT.IsAuthorized(HandleMembers.GetMembers)).Methods(http.MethodGet)
+    r.HandleFunc("/member/{mem_id}",HandleMembers.GetMembers).Methods(http.MethodGet)
     // Update Operation:
     r.HandleFunc("/member/{mem_id}", HandleMembers.UpdateMembersPut).Methods(http.MethodPut)
     // Error 
