@@ -9,6 +9,7 @@ import (
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 
+	"Api/HandleBooks"
 	"Api/HandleJWT"
 	"Api/HandleMembers"
 )
@@ -30,7 +31,15 @@ func main() {
     r.Handle("/member/{mem_id}",HandleJWT.IsAuthorized(HandleMembers.GetMembers)).Methods(http.MethodGet)
     // Update Operation:
     r.Handle("/member/", HandleJWT.IsAuthorized(HandleMembers.UpdateMembersPut)).Methods(http.MethodPut)
-    // Error 
+
+    // For Books:
+    // Create Operation:
+    r.Handle("/book/", HandleJWT.IsAuthorized(HandleBooks.AddBooks)).Methods(http.MethodPost)
+    // Get Operation:
+    r.Handle("/book/{book_id}",HandleJWT.IsAuthorized(HandleBooks.GetBooks)).Methods(http.MethodGet)
+    // Update Operation:
+    r.Handle("/book/", HandleJWT.IsAuthorized(HandleBooks.UpdateBooksPut)).Methods(http.MethodPut)
+
 
     // To Handle CORS (Cross Origin Resource Sharing)
     headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})

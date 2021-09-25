@@ -2,60 +2,61 @@ package HandleBooks
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strings"
 )
 
 /*
 
 Write function description here :
-
+Serves POST requests for adding values to Book collection.
 */
 func AddBooks(w http.ResponseWriter, r *http.Request) {
+  var ErrorFlag bool
+  ErrorFlag = false
+
   w.Header().Set("Content-Type", "application/json")
   w.WriteHeader(http.StatusCreated)
-
-  // decoding the message and displaying
-  reqBody, err := ioutil.ReadAll(r.Body)
-   if err != nil {
-     log.Fatal(err)
-   }
-  fmt.Printf("%s\n", reqBody)
-
-  // splitting data into user_name and an array of image names
-  data := BytesToString(reqBody)
-  splitData := strings.Split(data, ",")
-  fmt.Println("splitData : ",splitData)
-  userName := splitData[0]
-
-  // Opening connection to database
-
-  // setting mongo variables with Collection : ImageNames
+  // Read body
+  fmt.Printf("POST QUERY CALLED")
+	// Unmarshal
+  if r.Body == nil {
+      http.Error(w, "Please send a request body", 400)
+      return
+  }
+  // setting mongo variables with Collection : Member
   clientOptions := GetClientOptions()
   client := GetClient(clientOptions)
-  collection := GetCollection(client,"ImageNames")
+  collection := GetCollection(client,"Book")
   fmt.Println("Connected to MongoDB.")
 
-  // loop over each entry and insert into database
-  for i := 1;i<len(splitData);i++{
-    structData := Image_Names{userName,splitData[i]}
-    fmt.Println(structData)
-    // To insert a single record
-    insertResult, err := collection.InsertOne(context.TODO(), structData)
+  byteValue, _ := ioutil.ReadAll(r.Body)
+  var users Books
+  json.Unmarshal(byteValue, &users)
+  //fmt.Println("BODY: " + BytesToString(byteValue))
+  for i := 0; i < len(users.Books); i++ {
+    insertResult, err := collection.InsertOne(context.TODO(), users.Books[i])
     if err != nil {
-      log.Fatal(err)
+      fmt.Println("Error Occurred ", err)
+      ErrorFlag = true
+      break
     }
     fmt.Println("Inserted document: ", insertResult.InsertedID)
   }
-
+  
   // To close the connection to MongoDB
-  err = client.Disconnect(context.TODO())
+  err := client.Disconnect(context.TODO())
   if err != nil {
       log.Fatal(err)
   }
   fmt.Println("Connection to MongoDB closed.")
-  w.Write([]byte(`{"message": "Success"}`))
+
+  if ErrorFlag == true{
+    w.Write([]byte(`{"message": "Error"}`))
+  }else{
+    w.Write([]byte(`{"message": "Success"}`))
+  }
 }

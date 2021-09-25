@@ -39,5 +39,6 @@ Day 3 (25th Sept 2021):
 
 Day 4 (26th Sept 2021):
 
+- Enhance GET in Order to get ALL VALUES in entity if no ID is sent.
 - Containerize the solutions
 - Try to setup

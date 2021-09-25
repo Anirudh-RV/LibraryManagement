@@ -13,9 +13,17 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type Image_Names struct {
-    Name  string
-    Img_Name string
+type Book struct {
+    Book_id  int `json:"book_id"`
+    Book_name  string `json:"book_name"`
+    Book_cat_id  string `json:"book_cat_id"`
+    Book_collection_id  string `json:"book_collection_id"`
+    Book_launch_date  string `json:"book_launch_date"`
+    Book_publisher  string `json:"book_publisher"`
+}
+
+type Books struct {
+  Books []Book `json:"books"`
 }
 
 /*
@@ -72,7 +80,7 @@ Write function description here :
 
 */
 func GetCollection (client *mongo.Client,collectionname string) *mongo.Collection{
-  collection := client.Database("GoDB").Collection(collectionname)
+  collection := client.Database("LibraryAdmin").Collection(collectionname)
   return collection
 }
 
