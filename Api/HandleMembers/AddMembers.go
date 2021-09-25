@@ -46,6 +46,7 @@ func AddMembers(w http.ResponseWriter, r *http.Request) {
     }
     fmt.Println("Inserted document: ", insertResult.InsertedID)
   }
+  
   // To close the connection to MongoDB
   err := client.Disconnect(context.TODO())
   if err != nil {

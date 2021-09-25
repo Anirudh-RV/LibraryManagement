@@ -29,7 +29,7 @@ func main() {
     // Get Operation:
     r.Handle("/member/{mem_id}",HandleJWT.IsAuthorized(HandleMembers.GetMembers)).Methods(http.MethodGet)
     // Update Operation:
-    r.HandleFunc("/member/{mem_id}", HandleMembers.UpdateMembersPut).Methods(http.MethodPut)
+    r.Handle("/member/", HandleJWT.IsAuthorized(HandleMembers.UpdateMembersPut)).Methods(http.MethodPut)
     // Error 
 
     // To Handle CORS (Cross Origin Resource Sharing)
