@@ -53,28 +53,28 @@ DB:
 use LibraryAdmin
 
 member:
-db.createCollection("Member")
-db.Member.createIndex( { "mem_id" : 1 }, { unique : true })
+db.createCollection("Member");
+db.Member.createIndex( { "mem_id" : 1 }, { unique : true });
 
 book:
-db.createCollection("Book")
-db.Book.createIndex( { "book_id" : 1 }, { unique : true })
+db.createCollection("Book");
+db.Book.createIndex( { "book_id" : 1 }, { unique : true });
 
 issuance:
-db.createCollection("Issuance")
-db.Issuance.createIndex( { "issuance_id" : 1 }, { unique : true })
+db.createCollection("Issuance");
+db.Issuance.createIndex( { "issuance_id" : 1 }, { unique : true });
 
 collection:
-db.createCollection("Collection")
-db.Issuance.createIndex( { "collection_id" : 1 }, { unique : true })
+db.createCollection("Collection");
+db.Issuance.createIndex( { "collection_id" : 1 }, { unique : true });
 
 category:
-db.createCollection("Category")
-db.Issuance.createIndex( { "cat_id" : 1 }, { unique : true })
+db.createCollection("Category");
+db.Issuance.createIndex( { "cat_id" : 1 }, { unique : true });
 
 membership:
-db.createCollection("Membership")
-db.Issuance.createIndex( { "membership_id" : 1 }, { unique : true })
+db.createCollection("Membership");
+db.Issuance.createIndex( { "membership_id" : 1 }, { unique : true });
 
 2. To run the go API, go to the Api directory and run: go run main.go
 
