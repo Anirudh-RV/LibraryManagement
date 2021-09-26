@@ -82,14 +82,14 @@ db.Issuance.createIndex( { "membership_id" : 1 }, { unique : true });
 
 # Code rundowm
 
-1. Api's folder has the Go Api related code
-   a. HandleBooks handles the CRUD Apis for Books collection
-   b. HandleBooks handles the CRUD Apis for Books collection
-   c. HandleBooks handles the CRUD Apis for Books collection
-   d. HandleJWT handles the authorization of the API and making it secure
-   e. main.go handles the routes and which functions need to be called
-   f. TestRestMethods should be filled with test suites for the API calls
-2. webapp contains the reactJS app that needs to be implemented
+1. Api's folder has the Go Api related code<br />
+   a. HandleBooks handles the CRUD Apis for Books collection<br />
+   b. HandleBooks handles the CRUD Apis for Books collection<br />
+   c. HandleBooks handles the CRUD Apis for Books collection<br />
+   d. HandleJWT handles the authorization of the API and making it secure<br />
+   e. main.go handles the routes and which functions need to be called<br />
+   f. TestRestMethods should be filled with test suites for the API calls<br />
+2. webapp contains the reactJS app that needs to be implemented<br />
 
 # NOTES
 
