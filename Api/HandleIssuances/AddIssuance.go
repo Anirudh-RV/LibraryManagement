@@ -39,6 +39,35 @@ func AddIssuance(w http.ResponseWriter, r *http.Request) {
   //fmt.Println("BODY: " + BytesToString(byteValue))
   for i := 0; i < len(users.Issuances); i++ {
     //TODO: Verfiy that the BookID and MemberID exist and then insert the value.
+    var book Book
+    //var member Member
+    fmt.Println("Member ID: ", users.Issuances[i].Issuance_member)
+    fmt.Println("Book ID: ", users.Issuances[i].Book_id)
+
+    // Checking Book Entry status
+    output := fmt.Sprint("http://localhost:8080/book/",users.Issuances[i].Book_id)
+    response, error := http.Get(output)
+    if error != nil {
+      fmt.Println("Error Occurred ", error)
+      ErrorFlag = true
+      break
+    }
+    BookbyteValue, _ := ioutil.ReadAll(r.Body)
+    json.Unmarshal(BookbyteValue, &book)
+    fmt.Println("Book ID sent back: ",book.Book_id);
+
+
+    // Checking Member Entry status
+    output = fmt.Sprint("http://localhost:8080/member/",users.Issuances[i].Issuance_member)
+    response, error = http.Get(output)
+    if error != nil {
+      fmt.Println("Error Occurred ", error)
+      ErrorFlag = true
+      break
+    }
+    fmt.Println("Member RESPONSE: ", response)
+
+    // Inserting Data if Book and Member are Present
     insertResult, err := collection.InsertOne(context.TODO(), users.Issuances[i])
     if err != nil {
       fmt.Println("Error Occurred ", err)

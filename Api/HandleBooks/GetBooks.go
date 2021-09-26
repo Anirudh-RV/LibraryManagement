@@ -77,12 +77,13 @@ func GetAllBooks(w http.ResponseWriter, r *http.Request) {
   if err = filterCursor.All(context.TODO(), &Result); err != nil {
       log.Fatal(err)
   }
+  
   output := ""
   for _, document := range Result {
     for key, value := range document {
       fmt.Println(key, value)
       if key != "_id"{
-        output += fmt.Sprintln("[",key,",",value,"]")
+        output += fmt.Sprintln("{",key,",",value,"},")
       }
     }
   }   
