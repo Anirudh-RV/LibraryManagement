@@ -2,6 +2,7 @@ package HandleMembers
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -42,16 +43,7 @@ func GetMembers(w http.ResponseWriter, r *http.Request) {
   if err = filterCursor.All(context.TODO(), &Result); err != nil {
       log.Fatal(err)
   }
-  output := ""
-  for _, document := range Result {
-    for key, value := range document {
-      fmt.Println(key, value)
-      if key != "_id"{
-        output += fmt.Sprintln("[",key,",",value,"]")
-      }
-    }
-  }   
-  w.Write([]byte(fmt.Sprintf(output)))
+  json.NewEncoder(w).Encode(Result)
 }
 
 
@@ -77,14 +69,5 @@ func GetAllMembers(w http.ResponseWriter, r *http.Request) {
   if err = filterCursor.All(context.TODO(), &Result); err != nil {
       log.Fatal(err)
   }
-  output := ""
-  for _, document := range Result {
-    for key, value := range document {
-      fmt.Println(key, value)
-      if key != "_id"{
-        output += fmt.Sprintln("[",key,",",value,"]")
-      }
-    }
-  }   
-  w.Write([]byte(fmt.Sprintf(output)))
+  json.NewEncoder(w).Encode(Result)
 }

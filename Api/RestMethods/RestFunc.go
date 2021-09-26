@@ -43,7 +43,7 @@ PATCH is used to update a record based on the information provided (or patch it 
 func Patch(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "application/json")
     w.WriteHeader(http.StatusAccepted)
-    w.Write([]byte(`{"message": "PUT called"}`))
+    w.Write([]byte(`{"message": "PATCH called"}`))
 }
 
 /*
