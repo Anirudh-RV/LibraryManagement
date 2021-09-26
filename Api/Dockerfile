@@ -1,9 +1,9 @@
 FROM golang:1.13
 
-COPY . /API_Go
-WORKDIR /API_Go
+COPY . /Api
+WORKDIR /Api
 
-ADD . /API_Go
+ADD . /Api
 
 RUN go get github.com/gorilla/mux
 RUN go get github.com/gorilla/handlers
