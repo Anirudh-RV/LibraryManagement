@@ -1,4 +1,4 @@
-package HandleIssuance
+package HandleIssuances
 
 import (
 	"context"
@@ -13,9 +13,18 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type Image_Names struct {
-    Name  string
-    Img_Name string
+type Issuance struct {
+    Issuance_id  int `json:"issuance_id"`
+    Book_id  int `json:"book_id"`
+    Issuance_date  string `json:"issuance_date"`
+    Issuance_member  int `json:"issuance_member"`
+    Issued_by  string `json:"issued_by"`
+    Target_return_date  string `json:"target_return_date"`
+    Issuance_status  string `json:"issuance_status"`
+}
+
+type Issuances struct {
+  Issuances []Issuance `json:"issuances"`
 }
 
 /*
@@ -72,7 +81,7 @@ Write function description here :
 
 */
 func GetCollection (client *mongo.Client,collectionname string) *mongo.Collection{
-  collection := client.Database("GoDB").Collection(collectionname)
+  collection := client.Database("LibraryAdmin").Collection(collectionname)
   return collection
 }
 

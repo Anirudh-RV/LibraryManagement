@@ -10,6 +10,7 @@ import (
 	"github.com/gorilla/mux"
 
 	"Api/HandleBooks"
+	"Api/HandleIssuances"
 	"Api/HandleJWT"
 	"Api/HandleMembers"
 )
@@ -26,20 +27,30 @@ func main() {
 
     // For Members:
     // Create Operation:
-    r.Handle("/member/", HandleJWT.IsAuthorized(HandleMembers.AddMembers)).Methods(http.MethodPost)
+    r.Handle("/member", HandleJWT.IsAuthorized(HandleMembers.AddMembers)).Methods(http.MethodPost)
     // Get Operation:
+    r.Handle("/member",HandleJWT.IsAuthorized(HandleMembers.GetAllMembers)).Methods(http.MethodGet)
     r.Handle("/member/{mem_id}",HandleJWT.IsAuthorized(HandleMembers.GetMembers)).Methods(http.MethodGet)
     // Update Operation:
-    r.Handle("/member/", HandleJWT.IsAuthorized(HandleMembers.UpdateMembersPut)).Methods(http.MethodPut)
+    r.Handle("/member", HandleJWT.IsAuthorized(HandleMembers.UpdateMembersPut)).Methods(http.MethodPut)
 
     // For Books:
     // Create Operation:
-    r.Handle("/book/", HandleJWT.IsAuthorized(HandleBooks.AddBooks)).Methods(http.MethodPost)
+    r.Handle("/book", HandleJWT.IsAuthorized(HandleBooks.AddBooks)).Methods(http.MethodPost)
     // Get Operation:
+    r.Handle("/book",HandleJWT.IsAuthorized(HandleBooks.GetAllBooks)).Methods(http.MethodGet)
     r.Handle("/book/{book_id}",HandleJWT.IsAuthorized(HandleBooks.GetBooks)).Methods(http.MethodGet)
     // Update Operation:
-    r.Handle("/book/", HandleJWT.IsAuthorized(HandleBooks.UpdateBooksPut)).Methods(http.MethodPut)
+    r.Handle("/book", HandleJWT.IsAuthorized(HandleBooks.UpdateBooksPut)).Methods(http.MethodPut)
 
+    // For Issuances:
+    // Create Operation:
+    r.Handle("/issuance", HandleJWT.IsAuthorized(HandleIssuances.AddIssuance)).Methods(http.MethodPost)
+    // Get Operation:
+    r.Handle("/issuance",HandleJWT.IsAuthorized(HandleIssuances.GetAllIssuances)).Methods(http.MethodGet)
+    r.Handle("/issuance/{issuance_id}",HandleJWT.IsAuthorized(HandleIssuances.GetIssuance)).Methods(http.MethodGet)
+    // Update Operation:
+    r.Handle("/issuance", HandleJWT.IsAuthorized(HandleIssuances.UpdateIssuancePut)).Methods(http.MethodPut)
 
     // To Handle CORS (Cross Origin Resource Sharing)
     headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})

@@ -53,3 +53,38 @@ func GetBooks(w http.ResponseWriter, r *http.Request) {
   }   
   w.Write([]byte(fmt.Sprintf(output)))
 }
+
+
+func GetAllBooks(w http.ResponseWriter, r *http.Request) {
+  w.Header().Set("Content-Type", "application/json")
+  w.WriteHeader(http.StatusOK)
+
+  // decoding the message and displaying
+
+  // QUERYING MONGODB WITH name and returning the results
+  // setting mongo variables with Collection : Member
+  clientOptions := GetClientOptions()
+  client := GetClient(clientOptions)
+  collection := GetCollection(client,"Book")
+  fmt.Println("Connected to MongoDB.")
+
+  // add logic here :
+  filterCursor, err := collection.Find(context.TODO(), bson.D{{}})
+  if err != nil {
+      log.Fatal(err)
+  }
+  var Result []bson.M
+  if err = filterCursor.All(context.TODO(), &Result); err != nil {
+      log.Fatal(err)
+  }
+  output := ""
+  for _, document := range Result {
+    for key, value := range document {
+      fmt.Println(key, value)
+      if key != "_id"{
+        output += fmt.Sprintln("[",key,",",value,"]")
+      }
+    }
+  }   
+  w.Write([]byte(fmt.Sprintf(output)))
+}
