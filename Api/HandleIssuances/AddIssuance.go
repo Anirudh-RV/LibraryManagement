@@ -21,13 +21,11 @@ func AddIssuance(w http.ResponseWriter, r *http.Request) {
   w.Header().Set("Content-Type", "application/json")
   w.WriteHeader(http.StatusCreated)
   // Read body
-  fmt.Printf("POST QUERY CALLED")
 	// Unmarshal
   if r.Body == nil {
       http.Error(w, "Please send a request body", 400)
       return
   }
-  // setting mongo variables with Collection : Member
   clientOptions := GetClientOptions()
   client := GetClient(clientOptions)
   collection := GetCollection(client,"Issuance")
@@ -36,7 +34,6 @@ func AddIssuance(w http.ResponseWriter, r *http.Request) {
   byteValue, _ := ioutil.ReadAll(r.Body)
   var users Issuances
   json.Unmarshal(byteValue, &users)
-  //fmt.Println("BODY: " + BytesToString(byteValue))
   for i := 0; i < len(users.Issuances); i++ {
     //TODO: Verfiy that the BookID and MemberID exist and then insert the value.
     

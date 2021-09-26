@@ -21,7 +21,6 @@ func AddMembers(w http.ResponseWriter, r *http.Request) {
   w.Header().Set("Content-Type", "application/json")
   w.WriteHeader(http.StatusCreated)
   // Read body
-  fmt.Printf("POST QUERY CALLED")
 	// Unmarshal
   if r.Body == nil {
       http.Error(w, "Please send a request body", 400)

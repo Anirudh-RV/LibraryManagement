@@ -24,10 +24,6 @@ func GetBooks(w http.ResponseWriter, r *http.Request) {
   w.WriteHeader(http.StatusOK)
 
   // decoding the message and displaying
-  fmt.Printf("ID to be queried : %s\n", pathParams["book_id"])
-
-  // QUERYING MONGODB WITH name and returning the results
-  // setting mongo variables with Collection : Member
   clientOptions := GetClientOptions()
   client := GetClient(clientOptions)
   collection := GetCollection(client,"Book")
@@ -53,8 +49,6 @@ func GetAllBooks(w http.ResponseWriter, r *http.Request) {
 
   // decoding the message and displaying
 
-  // QUERYING MONGODB WITH name and returning the results
-  // setting mongo variables with Collection : Member
   clientOptions := GetClientOptions()
   client := GetClient(clientOptions)
   collection := GetCollection(client,"Book")

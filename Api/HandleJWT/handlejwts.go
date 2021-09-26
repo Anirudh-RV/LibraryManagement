@@ -52,7 +52,7 @@ func GenerateJWT() (string, error) {
     tokenString, err := token.SignedString(MySigningKey)
 
     if err != nil {
-        fmt.Errorf("Something Went Wrong: %s", err.Error())
+        fmt.Println("Something Went Wrong:", err.Error())
         return "", err
     }
 

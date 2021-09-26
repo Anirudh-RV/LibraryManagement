@@ -24,7 +24,6 @@ func GetMembers(w http.ResponseWriter, r *http.Request) {
   w.WriteHeader(http.StatusOK)
 
   // decoding the message and displaying
-  fmt.Printf("ID to be queried : %s\n", pathParams["mem_id"])
 
   // QUERYING MONGODB WITH name and returning the results
   // setting mongo variables with Collection : Member

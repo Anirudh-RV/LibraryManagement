@@ -18,7 +18,6 @@ Write function description here :
 Serves PUT Requests to update an entry.
 */
 func UpdateBooksPut(w http.ResponseWriter, r *http.Request) {
-  fmt.Printf("PUT QUERY CALLED")
   var ErrorFlag bool
   ErrorFlag = false
 
@@ -30,7 +29,6 @@ func UpdateBooksPut(w http.ResponseWriter, r *http.Request) {
       http.Error(w, "Please send a request body", 400)
       return
   }
-  // setting mongo variables with Collection : Member
   clientOptions := GetClientOptions()
   client := GetClient(clientOptions)
   collection := GetCollection(client,"Book")
