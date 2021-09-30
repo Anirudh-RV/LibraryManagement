@@ -31,15 +31,9 @@
    "members": [
    {
    "mem_id": 1,
-   "mem_name": "Joe",
+   "mem_name": "mem1",
    "mem_phone": "+91 7799228833",
-   "mem_email": "Joe@mama.com"
-   },
-   {
-   "mem_id": 2,
-   "mem_name": "Bideen",
-   "mem_phone": "+91 2082e8008",
-   "mem_email": "Bideen@yaya.com"
+   "mem_email": "mem1@email.com"
    }
    ]
    }
